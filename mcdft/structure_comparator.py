@@ -1,6 +1,6 @@
 import numpy as np
 from ase.ga.utilities import get_nnmat_string
-
+from ase.calculators.emt import EMT
 
 class StructureComparator:
     def __init__(self, max_size, pair_cor_cum_diff=0.015 , pair_cor_max= 0.7):
@@ -64,22 +64,25 @@ class StructureComparator:
         from latest to oldest return false as soon as it match with any structure.
         finaly return true if does not match with any other structure in the stack"""
         
-        #atoms_sort_dist=self.get_sorted_dist_list(atoms, mic=True)
+        atoms_sort_dist=self.get_sorted_dist_list(atoms, mic=True)
         
         if len(self.structures)<1:
             
             return True
         else:
             for structure, structure_sort_dist in zip(self.structures, self.sort_dists):
-                #not_unique=self.compare_sorted_dist(atoms,structure,atoms_sort_dist, structure_sort_dist)
-                atoms_nmstring=get_nnmat_string(atoms)
-                struc_nmstring=get_nnmat_string(structure)
-                not_unique = atoms_nmstring==struc_nmstring
-                print(atoms_nmstring)
-                print(struc_nmstring)
+                not_unique=self.compare_sorted_dist(atoms,structure,atoms_sort_dist, structure_sort_dist)
+                # atoms_nmstring=get_nnmat_string(atoms)
+                # struc_nmstring=get_nnmat_string(structure)
+                # not_unique = atoms_nmstring==struc_nmstring
+                # print(atoms_nmstring)
+                # print(struc_nmstring)
                 if not_unique:
+                    calc=EMT()
+                    atoms.calc=calc
+                    structure.calc=calc
                     self.count+=1
-                    print(f'match with a structure returning false. stopped {self.count} non unique structure')
+                    print(f'match E: {round(atoms.get_potential_energy(),4)} structure E: {round(structure.get_potential_energy(),4)} returning false. stopped {self.count} non unique structure')
                     return False
         print('match with no structure returning true')
         return True
