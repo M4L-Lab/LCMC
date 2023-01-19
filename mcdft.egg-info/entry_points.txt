@@ -1,0 +1,3 @@
+[console_scripts]
+mcdft = mcdft.cli:main
+

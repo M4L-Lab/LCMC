@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: mcdft
+Version: 0.3.0
+Summary: Python Boilerplate contains all the boilerplate you need to create a Python package.
+Home-page: https://github.com/imusa007/mcdft
+Author: Rajib Khan
+Author-email: irajibdu@gmail.com
+License: MIT license
+Keywords: mcdft
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6
+License-File: LICENSE
+License-File: AUTHORS.rst
+
+===========
+genetic-sro
+===========
+
+
+.. image:: https://img.shields.io/pypi/v/genetic_sro.svg
+        :target: https://pypi.python.org/pypi/genetic_sro
+
+.. image:: https://img.shields.io/travis/imusa007/genetic_sro.svg
+        :target: https://travis-ci.com/imusa007/genetic_sro
+
+.. image:: https://readthedocs.org/projects/genetic-sro/badge/?version=latest
+        :target: https://genetic-sro.readthedocs.io/en/latest/?version=latest
+        :alt: Documentation Status
+
+
+
+
+Python Boilerplate contains all the boilerplate you need to create a Python package.
+
+
+* Free software: MIT license
+* Documentation: https://genetic-sro.readthedocs.io.
+
+
+Features
+--------
+
+* TODO
+
+Credits
+-------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+=======
+History
+=======
+
+0.3.0 (2022-12-18)
+------------------
+
+* First release on PyPI.
+
+

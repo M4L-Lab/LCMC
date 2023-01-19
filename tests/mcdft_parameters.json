@@ -1,0 +1,6 @@
+{
+    "structure_file":"POSCAR_AuCuAl",
+    "N_steps":750,
+    "Temps":[700,500,300,100],
+    "traj_file":"AuCuAl.traj"
+}
