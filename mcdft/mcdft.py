@@ -1,6 +1,7 @@
 from ase import Atoms, Atom
 from ase.io import read, write
 from itertools import combinations
+from ase.ga.utilities import get_nnmat
 from mcdft.structure_generator import swap_atoms
 from mcdft.calculators import vasp_calculator
 import random
@@ -13,13 +14,16 @@ import os
 
 
 class MCDFT:
-    def __init__(self, atoms, calculator, N, traj, chain_length=10):
+    def __init__(self, atoms, calculator, N, traj,compare=False, chain_length=10, max_try_for_unique=1000):
         self.atoms = atoms
         self.calculator = calculator
         self.N = N
         self.traj = traj
-        self.chain_length=chain_length
-        self.comparator=StructureComparator(self.chain_length)
+        self.compare=compare
+        if self.compare:
+            self.chain_length=chain_length
+            self.comparator=StructureComparator(self.chain_length)
+            self.max_try_for_unique=max_try_for_unique
 
     def monte_carlo(self, dE,Temp):
         kB = 1.0 / 11604.0
@@ -39,7 +43,16 @@ class MCDFT:
             structures=[lowest_struc]
             energy=[E0]
             for i in range(1, self.N):
+                if i%10==0:
+                    print(f'{100*i/self.N}%')
                 atoms = swap_atoms(structures[-1].copy())
+
+                if self.compare:
+                    q=0
+                    while (not self.comparator.is_unique(atoms.copy())) and q<self.max_try_for_unique:
+                        atoms = swap_atoms(structures[-1].copy())
+                        q+=1
+                        
                 self.calculator.structure = atoms
                 e = self.calculator.calculate_energy(i)
 
@@ -49,10 +62,16 @@ class MCDFT:
 
                 dE = self.calculator.calculate_dE(energy[-1], e)
                 accept = self.monte_carlo(dE,Temp)
-                atoms.info["accept"] = accept
+                atoms.info['data']={}
+                atoms.info['data']['accept'] = accept
+                atoms.info['data']['nnmat']=get_nnmat(atoms.copy()*(3,3,3), mic=True)
                 if self.traj is not None:
                     self.traj.write(atoms)
                 if accept:
                     structures.append(atoms)
                     energy.append(e)
+                
+                if self.compare:
+                    self.comparator.push(atoms)
+
             print(f"Lowest Energy: {E0}")
