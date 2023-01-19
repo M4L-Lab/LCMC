@@ -8,15 +8,18 @@ import math
 import numpy as np
 from ase.io.trajectory import Trajectory
 from ase.calculators.vasp import Vasp
+from mcdft.structure_comparator import StructureComparator
 import os
 
 
 class MCDFT:
-    def __init__(self, atoms, calculator, N, traj):
+    def __init__(self, atoms, calculator, N, traj, chain_length=10):
         self.atoms = atoms
         self.calculator = calculator
         self.N = N
         self.traj = traj
+        self.chain_length=chain_length
+        self.comparator=StructureComparator(self.chain_length)
 
     def monte_carlo(self, dE,Temp):
         kB = 1.0 / 11604.0
