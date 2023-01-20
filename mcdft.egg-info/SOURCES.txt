@@ -20,6 +20,7 @@ mcdft/__init__.py
 mcdft/calculators.py
 mcdft/cli.py
 mcdft/mcdft.py
+mcdft/structure_comparator.py
 mcdft/structure_generator.py
 mcdft.egg-info/PKG-INFO
 mcdft.egg-info/SOURCES.txt
@@ -28,7 +29,13 @@ mcdft.egg-info/entry_points.txt
 mcdft.egg-info/not-zip-safe
 mcdft.egg-info/requires.txt
 mcdft.egg-info/top_level.txt
+tests/AuCuAl_50_nmstring.traj
+tests/POSCAR_AuCuAl
 tests/POSCAR_AuCu_0.25_SQS_2
 tests/POSCAR_AuCu_0.5_SQS_2
+tests/Untitled.ipynb
 tests/__init__.py
-tests/parameters.json
+tests/analysis.ipynb
+tests/mcdft_parameters.json
+tests/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+tests/.ipynb_checkpoints/analysis-checkpoint.ipynb

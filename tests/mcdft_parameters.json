@@ -1,6 +1,9 @@
 {
     "structure_file":"POSCAR_AuCuAl",
-    "N_steps":750,
-    "Temps":[700,500,300,100],
-    "traj_file":"AuCuAl.traj"
+    "N_steps":400,
+    "Temps":[500,300,100],
+    "traj_file":"AuCuAl_25_nmstring.traj",
+    "compare":true,
+    "chain_length":25,
+    "max_try_for_unique":1000
 }

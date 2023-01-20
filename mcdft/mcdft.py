@@ -34,7 +34,7 @@ class MCDFT:
         return accept
 
     def build_traj(self,Temps):
-
+        print('Ok good luck!')
         E0=self.calculator.calculate_energy(0)
         lowest_struc=self.atoms.copy()
         for Temp in Temps:
@@ -45,12 +45,14 @@ class MCDFT:
             for i in range(1, self.N):
                 if i%10==0:
                     print(f'{100*i/self.N}%')
+                
                 atoms = swap_atoms(structures[-1].copy())
 
                 if self.compare:
                     q=0
                     while (not self.comparator.is_unique(atoms.copy())) and q<self.max_try_for_unique:
                         atoms = swap_atoms(structures[-1].copy())
+                        
                         q+=1
                         
                 self.calculator.structure = atoms
@@ -62,16 +64,12 @@ class MCDFT:
 
                 dE = self.calculator.calculate_dE(energy[-1], e)
                 accept = self.monte_carlo(dE,Temp)
-                atoms.info['data']={}
-                atoms.info['data']['accept'] = accept
-                atoms.info['data']['nnmat']=get_nnmat(atoms.copy()*(3,3,3), mic=True)
+
+                atoms.info['accept'] = accept
                 if self.traj is not None:
                     self.traj.write(atoms)
                 if accept:
                     structures.append(atoms)
                     energy.append(e)
                 
-                if self.compare:
-                    self.comparator.push(atoms)
-
             print(f"Lowest Energy: {E0}")
