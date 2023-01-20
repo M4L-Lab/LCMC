@@ -46,17 +46,18 @@ class vasp_calculator(calculator):
         )
         self.atoms.pbc = True
         self.atoms.calc = calc
-        e=self.atoms.get_potential_energy()
+        e = self.atoms.get_potential_energy()
         return e
 
     def calculate_dE(self, Ei, Ef):
         dE = Ef - Ei
         return dE
 
+
 class emt_calculator(calculator):
     def __init__(self, atoms):
         self.atoms = atoms
-    
+
     @property
     def structure(self):
         return self.atoms
@@ -65,13 +66,13 @@ class emt_calculator(calculator):
     def structure(self, atoms):
         self.atoms = atoms
 
-    def calculate_energy(self,i):
+    def calculate_energy(self, i):
         self.atoms.pbc = True
-        calc=EMT()
+        calc = EMT()
         self.atoms.calc = calc
-        e=self.atoms.get_potential_energy()
+        e = self.atoms.get_potential_energy()
         return e
-    
+
     def calculate_dE(self, Ei, Ef):
         dE = Ef - Ei
         return dE
