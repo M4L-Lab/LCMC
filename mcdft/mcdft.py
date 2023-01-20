@@ -14,7 +14,7 @@ import os
 
 
 class MCDFT:
-    def __init__(self, atoms, calculator, N, traj,compare=False, chain_length=10, max_try_for_unique=1000):
+    def __init__(self, atoms, fast_string_maker, calculator, N, traj,compare=False, chain_length=10, max_try_for_unique=1000):
         self.atoms = atoms
         self.calculator = calculator
         self.N = N
@@ -22,7 +22,7 @@ class MCDFT:
         self.compare=compare
         if self.compare:
             self.chain_length=chain_length
-            self.comparator=StructureComparator(self.chain_length)
+            self.comparator=StructureComparator(fast_string_maker, self.chain_length)
             self.max_try_for_unique=max_try_for_unique
 
     def monte_carlo(self, dE,Temp):

@@ -7,12 +7,30 @@ from ase.io import jsonio
 from ase.build import sort
 from mcdft.mcdft import MCDFT
 from mcdft.calculators import vasp_calculator, emt_calculator
+from mcdft.fast_string import FastString
+from ase.ga.utilities import get_nndist
 import os
 import json
 
+
+def get_fast_string_maker(atoms):
+    natoms=atoms.copy()
+    natoms=natoms*(3,3,3)
+    dm = natoms.get_all_distances(mic=True)
+    nndist = get_nndist(natoms, dm) + 0.2
+    fast_string_maker=FastString(dm,nndist)
+    return fast_string_maker
+
+
 def run_mcdft(atoms,N_steps,traj,Temps,compare=False, chain_length=10, max_try_for_unique=1000):
     calc = emt_calculator(atoms)
-    mcdft = MCDFT(atoms, calc, N_steps, traj,compare=compare,chain_length=chain_length,max_try_for_unique=max_try_for_unique)
+    
+    #dm = atoms.get_all_distances(mic=True)
+    #nndist = get_nndist(atoms, dm) + 0.2
+
+    fast_string_maker=get_fast_string_maker(atoms)
+    
+    mcdft = MCDFT(atoms,fast_string_maker, calc, N_steps, traj,compare=compare,chain_length=chain_length,max_try_for_unique=max_try_for_unique)
     mcdft.build_traj(Temps)
     
  
