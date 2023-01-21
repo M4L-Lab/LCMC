@@ -43,7 +43,7 @@ class StructureComparator:
             calc = EMT()
             atoms.calc = calc
             atoms_energy = np.round(atoms.get_potential_energy(), 3)
-            print(f"S: {atoms_nmstring} E:{atoms_energy}")
+            #print(f"S: {atoms_nmstring} E:{atoms_energy}")
             for structure, s_string in zip(self.structures, self.nmstring):
                 # not_unique=self.compare_sorted_dist(atoms,structure,atoms_sort_dist, structure_sort_dist)
 
@@ -54,14 +54,12 @@ class StructureComparator:
 
                 struc_energy = np.round(structure.get_potential_energy(), 3)
 
-                print(f"S:{s_string} E:{struc_energy}")
+                #print(f"S:{s_string} E:{struc_energy}")
 
                 if not_unique:
                     self.count += 1
-                    print(
-                        f"match returning false. stopped {self.count} non unique structure"
-                    )
+                    #print(f"match returning false. stopped {self.count} non unique structure")
                     return False
         self.push(atoms)
-        print("match with no structure returning true")
+        #print("match with no structure returning true")
         return True

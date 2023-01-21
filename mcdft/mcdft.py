@@ -11,6 +11,8 @@ from ase.io.trajectory import Trajectory
 from ase.calculators.vasp import Vasp
 from mcdft.structure_comparator import StructureComparator
 import os
+import logging
+
 
 
 class MCDFT:
@@ -34,16 +36,17 @@ class MCDFT:
         return accept
 
     def build_traj(self,Temps):
-        print('Ok good luck!')
+
         E0=self.calculator.calculate_energy(0)
         lowest_struc=self.atoms.copy()
         for Temp in Temps:
-            print(f"Temp: {Temp}")
+            print(f"Temp: {Temp}k")
             print(f"Initial Energy : {E0}")
+            logging.info(f"\n Temp: {Temp}k \t Initial Energy : {E0}\n")
             structures=[lowest_struc]
             energy=[E0]
             for i in range(1, self.N):
-                if i%10==0:
+                if i % 10 == 0:
                     print(f'{100*i/self.N}%')
                 
                 atoms = swap_atoms(structures[-1].copy())
@@ -57,14 +60,17 @@ class MCDFT:
                         
                 self.calculator.structure = atoms
                 e = self.calculator.calculate_energy(i)
-
+                
                 if e<E0:
                     E0=e
                     lowest_struc=atoms.copy()
 
                 dE = self.calculator.calculate_dE(energy[-1], e)
                 accept = self.monte_carlo(dE,Temp)
-
+                
+                if i % 10 == 0:
+                    logging.info(f'Temp:{Temp}K \t Step : {i} \t Energy : {e}')
+                
                 atoms.info['accept'] = accept
                 if self.traj is not None:
                     self.traj.write(atoms)

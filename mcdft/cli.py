@@ -10,7 +10,11 @@ from mcdft.calculators import vasp_calculator, emt_calculator
 from mcdft.fast_string import FastString
 from ase.ga.utilities import get_nndist
 import os
+import time
 import json
+import logging
+
+logging.basicConfig(filename='LCMC_run.log', filemode='w',level=logging.INFO, format='%(message)s')
 
 
 def get_fast_string_maker(atoms):
@@ -47,6 +51,10 @@ def run_mcdft(
 
 @click.command()
 def main(arg=None):
+    
+    t1=time.time()
+    logging.info(f'Welcome to LCMC v 0.3.0 \n')
+    
     with open("mcdft_parameters.json", "r") as jsonfile:
         data = json.load(jsonfile)
 
@@ -58,6 +66,14 @@ def main(arg=None):
     chain_length = data["chain_length"]
     max_try_for_unique = data["max_try_for_unique"]
     traj = Trajectory(os.path.join(dir, data["traj_file"]), "w")
+
+    logging.info(f'Running MCMC with following parameters: \n \
+                 Input structure :{data["structure_file"]} \n \
+                 Temperature : {Temps} \n \
+                 Number of steps for each temp : {N_steps} \n \
+                 number of previous steps to make next step: {chain_length} \n \
+                 simulation structure and energy data :{data["traj_file"]} \n')
+
     run_mcdft(
         atoms,
         N_steps,
@@ -67,6 +83,9 @@ def main(arg=None):
         chain_length=chain_length,
         max_try_for_unique=max_try_for_unique,
     )
+    t2=time.time()
+    print(f'Total Time:{t2-t1}')
+    logging.info(f"Total Time: {t2-t1}")
     return 0
 
 

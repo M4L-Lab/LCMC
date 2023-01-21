@@ -1,8 +1,5 @@
-from ase.ga.utilities import get_nndist
 import numpy as np
 
-# dm = atoms.get_all_distances(mic=mic)
-# nndist = get_nndist(atoms, dm) + 0.2
 
 class FastString:
     def __init__(self,dm,nndist,decimals=2,mic=True):
