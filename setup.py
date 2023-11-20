@@ -4,7 +4,7 @@
 
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
 
 with open('HISTORY.rst') as history_file:
@@ -15,7 +15,7 @@ requirements = ['Click>=7.0', ]
 test_requirements = ['pytest>=3', ]
 
 setup(
-    author="Rajib Khan",
+    author="Rajib K. Musa",
     author_email='irajibdu@gmail.com',
     python_requires='>=3.6',
     classifiers=[
@@ -31,19 +31,19 @@ setup(
     description="Python Boilerplate contains all the boilerplate you need to create a Python package.",
     entry_points={
         'console_scripts': [
-            'mcdft=mcdft.cli:main',
+            'lcmc=lcmc.cli:main',
         ],
     },
     install_requires=requirements,
     license="MIT license",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='mcdft',
-    name='mcdft',
-    packages=find_packages(include=['mcdft', 'mcdft.*']),
+    keywords='Monte-Carlo, Alloy, Material science',
+    name='lcmc',
+    packages=find_packages(include=['lcmc', 'lcmc.*']),
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/imusa007/mcdft',
+    url='https://github.com/M4L-Lab/LCMC',
     version='0.3.0',
     zip_safe=False,
 )
