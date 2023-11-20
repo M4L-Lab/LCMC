@@ -5,9 +5,9 @@ from ase.io import read, write
 from ase.io.trajectory import Trajectory
 from ase.io import jsonio
 from ase.build import sort
-from mcdft.mcdft import MCDFT
-from mcdft.calculators import vasp_calculator, emt_calculator
-from mcdft.fast_string import FastString
+from lcmc.mcdft import MCDFT
+from lcmc.calculators import vasp_calculator, emt_calculator
+from lcmc.fast_string import FastString
 from ase.ga.utilities import get_nndist
 import os
 import time

@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = genetic_sro
+SPHINXPROJ    = mcdft
 SOURCEDIR     = .
 BUILDDIR      = _build
 

@@ -2,14 +2,14 @@ from ase import Atoms, Atom
 from ase.io import read, write
 from itertools import combinations
 from ase.ga.utilities import get_nnmat
-from mcdft.structure_generator import swap_atoms
-from mcdft.calculators import vasp_calculator
+from lcmc.structure_generator import swap_atoms
+from lcmc.calculators import vasp_calculator
 import random
 import math
 import numpy as np
 from ase.io.trajectory import Trajectory
 from ase.calculators.vasp import Vasp
-from mcdft.structure_comparator import StructureComparator
+from lcmc.structure_comparator import StructureComparator
 import os
 import logging
 
