@@ -23,9 +23,12 @@ sdist/
 var/
 wheels/
 *.egg-info/
-.installed.cfg
+mcdft.egg-info/  # Exclude the entire mcdft.egg-info directory
 *.egg
 MANIFEST
+
+# mcdft/__pycache__/ files
+mcdft/__pycache__/
 
 # Environments
 .env
@@ -62,3 +65,20 @@ htmlcov/
 
 # Windows
 Thumbs.db
+
+# Ignore specific files
+.python-version
+mcdft.egg-info/PKG-INFO
+mcdft.egg-info/SOURCES.txt
+mcdft.egg-info/dependency_links.txt
+mcdft.egg-info/entry_points.txt
+mcdft.egg-info/not-zip-safe
+mcdft.egg-info/requires.txt
+mcdft.egg-info/top_level.txt
+mcdft/__pycache__/__init__.cpython-310.pyc
+mcdft/__pycache__/calculators.cpython-310.pyc
+mcdft/__pycache__/cli.cpython-310.pyc
+mcdft/__pycache__/fast_string.cpython-310.pyc
+mcdft/__pycache__/mcdft.cpython-310.pyc
+mcdft/__pycache__/structure_comparator.cpython-310.pyc
+mcdft/__pycache__/structure_generator.cpython-310.pyc
