@@ -16,6 +16,7 @@ import logging
 
 
 class MCDFT:
+    """MCDFT class. contains all Monte-carlo related task"""
     def __init__(self, atoms, fast_string_maker, calculator, N, traj,compare=False, chain_length=10, max_try_for_unique=1000):
         self.atoms = atoms
         self.calculator = calculator
