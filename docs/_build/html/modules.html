@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Classes &#8212; LCMC 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=af2ce170"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="LCMC Documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-lcmc.calculators">
+<span id="classes"></span><h1>Classes<a class="headerlink" href="#module-lcmc.calculators" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="lcmc.calculators.calculator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lcmc.calculators.</span></span><span class="sig-name descname"><span class="pre">calculator</span></span><a class="headerlink" href="#lcmc.calculators.calculator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lcmc.calculators.emt_calculator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lcmc.calculators.</span></span><span class="sig-name descname"><span class="pre">emt_calculator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atoms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lcmc.calculators.emt_calculator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lcmc.calculators.vasp_calculator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lcmc.calculators.</span></span><span class="sig-name descname"><span class="pre">vasp_calculator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atoms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lcmc.calculators.vasp_calculator" title="Permalink to this definition">¶</a></dt>
+<dd><p>perform energy calculations using the VASP</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><ul class="simple">
+<li><p>atoms (ASE Atoms): The ASE <cite>Atoms</cite> object representing the atomic structure</p></li>
+<li><p>dir (str): Directory for VASP calculations</p></li>
+<li><p>command (str): command to run VASP.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lcmc.calculators.vasp_calculator.calculate_dE">
+<span class="sig-name descname"><span class="pre">calculate_dE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ei</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ef</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lcmc.calculators.vasp_calculator.calculate_dE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the energy difference (dE) between two energy values.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Ei (float): Initial energy value.
+Ef (float): Final energy value.</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: The energy difference (dE).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lcmc.calculators.vasp_calculator.calculate_energy">
+<span class="sig-name descname"><span class="pre">calculate_energy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mc_step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lcmc.calculators.vasp_calculator.calculate_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the energy of the atomic structure for a given Monte Carlo (MC) step using VASP.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>mc_step (int): The Monte Carlo step for which the energy is calculated.</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: The calculated energy.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lcmc.calculators.vasp_calculator.structure">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">structure</span></span><a class="headerlink" href="#lcmc.calculators.vasp_calculator.structure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the ASE Atoms object representing the atomic structure.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>ASE Atoms: The atomic structure.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-lcmc.fast_string"></span><dl class="py class">
+<dt class="sig sig-object py" id="lcmc.fast_string.FastString">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lcmc.fast_string.</span></span><span class="sig-name descname"><span class="pre">FastString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nndist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lcmc.fast_string.FastString" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="lcmc.fast_string.FastString.get_nnmat">
+<span class="sig-name descname"><span class="pre">get_nnmat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atoms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lcmc.fast_string.FastString.get_nnmat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lcmc.fast_string.FastString.get_nnmat_string">
+<span class="sig-name descname"><span class="pre">get_nnmat_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atoms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lcmc.fast_string.FastString.get_nnmat_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-lcmc.mcdft"></span><dl class="py class">
+<dt class="sig sig-object py" id="lcmc.mcdft.MCDFT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lcmc.mcdft.</span></span><span class="sig-name descname"><span class="pre">MCDFT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atoms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fast_string_maker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calculator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compare</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_try_for_unique</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lcmc.mcdft.MCDFT" title="Permalink to this definition">¶</a></dt>
+<dd><p>MCDFT class. contains all Monte-carlo related task</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lcmc.mcdft.MCDFT.build_traj">
+<span class="sig-name descname"><span class="pre">build_traj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Temps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lcmc.mcdft.MCDFT.build_traj" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lcmc.mcdft.MCDFT.monte_carlo">
+<span class="sig-name descname"><span class="pre">monte_carlo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Temp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lcmc.mcdft.MCDFT.monte_carlo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">LCMC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lcmc.calculators.calculator"><code class="docutils literal notranslate"><span class="pre">calculator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lcmc.calculators.emt_calculator"><code class="docutils literal notranslate"><span class="pre">emt_calculator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lcmc.calculators.vasp_calculator"><code class="docutils literal notranslate"><span class="pre">vasp_calculator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lcmc.fast_string.FastString"><code class="docutils literal notranslate"><span class="pre">FastString</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lcmc.mcdft.MCDFT"><code class="docutils literal notranslate"><span class="pre">MCDFT</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">LCMC Documentation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Rajib K. Musa.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/modules.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
